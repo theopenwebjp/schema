@@ -1,0 +1,19 @@
+{
+  "name": "schema",
+  "version": "1.0.0",
+  "description": "A collection of schema.\r Currently, no specific grouping.",
+  "main": "Schema.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goldingdamien/schema.git"
+  },
+  "author": "Damien Golding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goldingdamien/schema/issues"
+  },
+  "homepage": "https://github.com/goldingdamien/schema#readme"
+}

@@ -395,3 +395,6 @@ var Schema = function(){
     
   return schema;
 }
+if(typeof module === 'object'){
+  module.exports = Schema;
+}
