@@ -1,0 +1,267 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "definitions": {
+        "Api": {
+            "type": "object",
+            "properties": {
+                "owner": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            }
+        },
+
+        "SoftwareDocumentation": {
+            "type": "object",
+            "properties": {}
+        },
+
+        "Project": {
+            "type": "object",
+            "properties": {
+                "api": {
+                    "$ref": "#definitions/Api"
+                },
+                "mainType": {
+                    "type": "string",
+                    "enum": [
+                        "npm", "composer"
+                    ],
+                    "description": "Specifies which config to use as main. Important when clashes occur."
+                },
+                "temp": {
+                    "type": "string"
+                },
+                "documentation": {
+                    "$ref": "#definitions/SoftwareDocumentation"
+                },
+                "test": {
+                    "$ref": "#definitions/ProjectTest"
+                },
+                "sourcePaths": {
+                    "type": "array",
+                    "items": [{
+                        "type": "string"
+                    }]
+                },
+                "testPaths": {
+                    "type": "array",
+                    "items": [{
+                        "type": "string"
+                    }]
+                },
+                "inputPaths": {
+                    "type": "array",
+                    "items": [{
+                        "type": "string"
+                    }]
+                },
+                "outputPaths": {
+                    "type": "array",
+                    "items": [{
+                        "type": "string"
+                    }]
+                }
+            }
+        },
+
+        "Projects": {
+            "type": "object",
+            "properties": {
+                "hierarchy": {
+                    "properties": {
+                        "type": {
+                            "oneOf": [{
+                                "$ref": "#definitions/flatCollection"
+                            }]
+                        },
+                        "ignoreProject": {
+                            "type": "string",
+                            "default": "$_"
+                        }
+                    }
+                },
+                "api": {
+                    "$ref": "#definitions/Api"
+                },
+                "default": {
+                    "type": "object",
+                    "properties": {}
+                },
+                "common": {
+                    "type": "object",
+                    "properties": {}
+                },
+                "test": {
+                    "type": "object",
+                    "properties": {
+                        "tests": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#definitions/ProjectTest"
+                            }
+                        }
+                    }
+                },
+                "access": {
+                    "enum": [
+                        "public", "private", "unsorted"
+                    ],
+                    "default": "unsorted"
+                }
+            }
+        },
+
+        "ProjectTest": {
+            "type": "object",
+            "properties": {
+                "required": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["git", "readme"]
+                    }
+                },
+                "allowed": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["npm", "composer"]
+                    }
+                },
+                "status": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["git-committed", "git-pushed"]
+                    }
+                }
+            }
+        },
+        "DriveMappings": {
+            "type": "array",
+            "items": {
+                "$ref": "#definitions/DriveMapping"
+            }
+        },
+
+        "DriveMapping": {
+            "type": "object",
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object."
+                },
+                "check": {
+                    "type": "object",
+                    "properties": {
+                        "size": {
+                            "type": "string",
+                            "description": "Exact size"
+                        },
+                        "format": {
+                            "type": "string",
+                            "description": "Drive format"
+                        },
+                        "path": {
+                            "type": "string",
+                            "description": "Path to a file or directory that always exists"
+                        }
+                    }
+                }
+            }
+        },
+
+        "DriveSettings": {
+            "type": "object",
+            "properties": {
+                "developmentDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "projectCollections": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "imageDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "videoDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "documentDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "backupDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+
+        "ManagementSettings": {
+            "type": "object",
+            "properties": {}
+        },
+
+        "DevelopmentSettings": {
+            "type": "object",
+            "properties": {
+                "installations": {
+                    "type": "string"
+                },
+                "assets": {
+                    "type": "string",
+                    "description": "Path to directory of flat OR nested hierarchy of asset files."
+                },
+                "binaries": {
+                    "type": "string",
+                    "description": "Path to directory of flat hierarchy of binaries."
+                },
+                "shortcuts": {
+                    "type": "string",
+                    "description": "Path to directory with flat hierarchy of shortcuts."
+                },
+                "temp": {
+                    "type": "string",
+                    "description": "Path to directory of temporary data. Temporary data is considered DELETABLE."
+                },
+                "backup": {
+                    "type": "string",
+                    "description": "Path to directory of backup data."
+                },
+                "projectCollections": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#definitions/Projects"
+                    }
+                },
+                "issues": {
+                    "type": "string",
+                    "description": "Path to directory of flat OR nested hierarchy of issue files."
+                },
+                "management": {
+                    "type": "string",
+                    "description": "Path to directory of management. Expects directly of format ManagementSettings."
+                }
+            }
+        }
+    }
+}

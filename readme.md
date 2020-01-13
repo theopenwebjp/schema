@@ -3,15 +3,24 @@
 A collection of schema.
 Currently, no specific grouping.
 
+## Example
+
+Add any examples to the example directory.
+
 ## Format
 
-[https://json-ld.org/](Official JSON LD site)
-[https://en.wikipedia.org/wiki/JSON-LD](JSON LD Wikipedia)
+Schema are to the schema directory.
+The following schema are allowed:
 
-## Linked data
+- jsdoc
+- json-schema
+- typescript
+- webidl
 
-jSON-LD uses [@key]: "url".
-To use mutliple schema in same file use [@key]: "class name". If need to be fully JSON-LD compliant, should generate separate files.
+custom-json-ld is deprecated:
+
+- [https://json-ld.org/](Official JSON LD site)
+- [https://en.wikipedia.org/wiki/JSON-LD](JSON LD Wikipedia)
 
 ## Typing
 
