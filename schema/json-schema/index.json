@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "definitions": {
     "Name": {
-      "$ref": "#definitions/Notation"
+      "$ref": "#/definitions/Notation"
     },
 
     "JapanOccupation": {
@@ -14,13 +14,13 @@
       "type": "object",
       "properties": {
         "time": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         },
         "timing": {
-          "$ref": "#definitions/Timing"
+          "$ref": "#/definitions/Timing"
         },
         "pay": {
-          "$ref": "#definitions/Pay"
+          "$ref": "#/definitions/Pay"
         }
       }
     },
@@ -29,13 +29,13 @@
       "type": "object",
       "properties": {
         "start": {
-          "$ref": "#definitions/TimingPreferences"
+          "$ref": "#/definitions/TimingPreferences"
         },
         "end": {
-          "$ref": "#definitions/TimingPrefrences"
+          "$ref": "#/definitions/TimingPreferences"
         },
         "days": {
-          "$ref": "#definitions/WeekDays"
+          "$ref": "#/definitions/WeekDays"
         },
         "length": {
           "type": "string",
@@ -48,11 +48,11 @@
       "type": "object",
       "properties": {
         "timed": {
-          "$ref": "#definitions/PayConditions",
+          "$ref": "#/definitions/PayConditions",
           "default": false
         },
         "fixed": {
-          "$ref": "#definitions/PayConditions",
+          "$ref": "#/definitions/PayConditions",
           "default": false
         }
       }
@@ -87,10 +87,10 @@
           }
         },
         "minDuration": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         },
         "maxWeekDuration": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         }
       }
     },
@@ -161,16 +161,16 @@
       "type": "object",
       "properties": {
         "name": {
-          "$ref": "#definitions/Name"
+          "$ref": "#/definitions/Name"
         },
         "sex": {
           "type": "string"
         },
         "birthDate": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         },
         "birthPlace": {
-          "$ref": "#definitions/Location"
+          "$ref": "#/definitions/Location"
         },
         "nativeLanguage": {
           "type": "string"
@@ -245,10 +245,10 @@
       "type": "object",
       "properties": {
         "from": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         },
         "to": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         }
       }
     },
@@ -306,25 +306,25 @@
       "type": "object",
       "properties": {
         "physicalAddress": {
-          "$ref": "#definitions/Location"
+          "$ref": "#/definitions/Location"
         },
         "emailAddress": {
-          "$ref": "#definitions/ContactType"
+          "$ref": "#/definitions/ContactType"
         },
         "phoneNumber": {
-          "$ref": "#definitions/ContactType"
+          "$ref": "#/definitions/ContactType"
         },
         "skype": {
-          "$ref": "#definitions/ServiceCredentials"
+          "$ref": "#/definitions/ServiceCredentials"
         },
         "line": {
-          "$ref": "#definitions/ServiceCredentials"
+          "$ref": "#/definitions/ServiceCredentials"
         },
         "facebook": {
-          "$ref": "#definitions/ServiceCredentials"
+          "$ref": "#/definitions/ServiceCredentials"
         },
         "twitter": {
-          "$ref": "#definitions/ServiceCredentials"
+          "$ref": "#/definitions/ServiceCredentials"
         }
       }
     },
@@ -333,10 +333,10 @@
       "type": "object",
       "properties": {
         "context": {
-          "$ref": "#definitions/Address"
+          "$ref": "#/definitions/Address"
         },
         "name": {
-          "$ref": "#definitions/Name"
+          "$ref": "#/definitions/Name"
         }
       }
     },
@@ -359,10 +359,10 @@
       "type": "object",
       "properties": {
         "coords": {
-          "$ref": "#definitions/Coordinates"
+          "$ref": "#/definitions/Coordinates"
         },
         "address": {
-          "$ref": "#definitions/Address"
+          "$ref": "#/definitions/Address"
         }
       }
     },
@@ -441,7 +441,7 @@
         "works": {
           "type": "array",
           "items": {
-            "$ref": "#definitions/PortfolioWork"
+            "$ref": "#/definitions/PortfolioWork"
           }
         }
 
@@ -460,7 +460,7 @@
           "default": ""
         },
         "range": {
-          "$ref": "#definitions/TimeRange"
+          "$ref": "#/definitions/TimeRange"
         },
         "website": {
           "type": "string",
@@ -470,7 +470,7 @@
     },
 
     "Work": {
-      "$ref": "#definitions/CommonHistory",
+      "$ref": "#/definitions/CommonHistory",
       "properties": {
         "contract": {
           "type": "string",
@@ -481,19 +481,19 @@
           "default": ""
         },
         "contractedCompany": {
-          "$ref": "#definitions/Company"
+          "$ref": "#/definitions/Company"
         },
         "employedCompany": {
-          "$ref": "#definitions/Company"
+          "$ref": "#/definitions/Company"
         },
         "stationedCompany": {
-          "$ref": "#definitions/Company"
+          "$ref": "#/definitions/Company"
         }
       }
     },
 
     "Company": {
-      "$ref": "#definitions/Business",
+      "$ref": "#/definitions/Business",
       "properties": {
         "type": {
           "type": "string",
@@ -502,7 +502,7 @@
         "shares": {
           "type": "array",
           "items": {
-            "$ref": "#definitions/StockShare"
+            "$ref": "#/definitions/StockShare"
           }
         }
       }
@@ -520,7 +520,7 @@
           "default": ""
         },
         "address": {
-          "$ref": "#definitions/Address"
+          "$ref": "#/definitions/Address"
         },
         "founder": {
           "type": "string",
@@ -544,7 +544,7 @@
     },
 
     "Education": {
-      "$ref": "#definitions/CommonHistory",
+      "$ref": "#/definitions/CommonHistory",
       "properties": {
         "status": {
           "type": "string",
@@ -554,7 +554,7 @@
     },
 
     "Qualifications": {
-      "$ref": "#definitions/CommonHistory"
+      "$ref": "#/definitions/CommonHistory"
     },
 
     "CommonHistory": {
@@ -563,7 +563,7 @@
         "items": {
           "type": "array",
           "items": {
-            "$ref": "#definitions/CommonHistoryItem"
+            "$ref": "#/definitions/CommonHistoryItem"
           }
         }
       }
@@ -573,7 +573,7 @@
       "type": "object",
       "properties": {
         "range": {
-          "$ref": "#definitions/TimeRange"
+          "$ref": "#/definitions/TimeRange"
         },
         "title": {
           "type": "string",
@@ -587,7 +587,7 @@
           "type": "array"
         },
         "location": {
-          "$ref": "#definitions/Location"
+          "$ref": "#/definitions/Location"
         }
       }
     },
@@ -598,7 +598,7 @@
         "skills": {
           "type": "array",
           "items": {
-            "$ref": "#definitions/Skill"
+            "$ref": "#/definitions/Skill"
           }
         }
       }
@@ -612,7 +612,7 @@
           "default": ""
         },
         "time": {
-          "$ref": "#definitions/Time"
+          "$ref": "#/definitions/Time"
         }
       }
     },
@@ -639,13 +639,13 @@
         }
       },
       "commute": {
-        "$ref": "#definitions/Commute"
+        "$ref": "#/definitions/Commute"
       },
       "timing": {
-        "$ref": "#definitions/Timing"
+        "$ref": "#/definitions/Timing"
       },
       "pay": {
-        "$ref": "#definitions/Pay"
+        "$ref": "#/definitions/Pay"
       },
       "keywords": {
         "type": "array",
@@ -679,7 +679,7 @@
       "type": "object",
       "properties": {
         "images": {
-          "$ref": "#definitions/Images"
+          "$ref": "#/definitions/Images"
         }
       }
     },
@@ -726,7 +726,7 @@
           "default": ""
         },
         "commute": {
-          "$ref": "#definitions/Commute"
+          "$ref": "#/definitions/Commute"
         }
       }
     },
@@ -774,7 +774,7 @@
       "type": "object",
       "properties": {
         "api": {
-          "$ref": "#definitions/Api"
+          "$ref": "#/definitions/Api"
         },
         "mainType": {
           "type": "string",
@@ -787,10 +787,10 @@
           "type": "string"
         },
         "documentation": {
-          "$ref": "#definitions/SoftwareDocumentation"
+          "$ref": "#/definitions/SoftwareDocumentation"
         },
         "test": {
-          "$ref": "#definitions/ProjectTest"
+          "$ref": "#/definitions/ProjectTest"
         },
         "sourcePaths": {
           "type": "array",
@@ -823,20 +823,19 @@
       "type": "object",
       "properties": {
         "hierarchy": {
+          "type": "object",
           "properties": {
             "type": {
-              "oneOf": [{
-                "$ref": "#definitions/flatCollection"
-              }]
-            },
-            "ignoreProject": {
-              "type": "string",
-              "default": "$_"
+              "type": "object"
             }
+          },
+          "ignoreProject": {
+            "type": "string",
+            "default": "$_"
           }
         },
         "api": {
-          "$ref": "#definitions/Api"
+          "$ref": "#/definitions/Api"
         },
         "default": {
           "type": "object",
@@ -852,7 +851,7 @@
             "tests": {
               "type": "array",
               "items": {
-                "$ref": "#definitions/ProjectTest"
+                "$ref": "#/definitions/ProjectTest"
               }
             }
           }
@@ -895,7 +894,7 @@
     "DriveMappings": {
       "type": "array",
       "items": {
-        "$ref": "#definitions/DriveMapping"
+        "$ref": "#/definitions/DriveMapping"
       }
     },
 
@@ -1002,7 +1001,7 @@
         "projectCollections": {
           "type": "array",
           "items": {
-            "$ref": "#definitions/Projects"
+            "$ref": "#/definitions/Projects"
           }
         },
         "issues": {

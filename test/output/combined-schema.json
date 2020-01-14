@@ -1,0 +1,3659 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "definitions": {
+    "Name": {
+      "oneOf": [{
+        "type": "string"
+      }, {
+        "type": "object"
+      }],
+      "@description1": "Can hold any data.",
+      "@description2": "Allowed formats",
+      "@description3": "1. ISO language code",
+      "@description4": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
+      "@description5": "2. ISO language name",
+      "@description6": "3. Script name(Example: katakana)",
+      "@type": ["./iso-language-codes.json", "./iso-language-names.json", "./scripts.json"]
+    },
+    "JapanOccupation": {
+      "type": "string",
+      "description": "https://www.hellowork.go.jp/info/job_dictionary.html"
+    },
+    "Commute": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        },
+        "timing": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "object",
+              "properties": {
+                "immediate": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "anytime": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "end": {
+              "type": "object",
+              "properties": {
+                "immediate": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "anytime": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "days": {
+              "type": "object",
+              "properties": {
+                "monday": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "tuesday": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "wednesday": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "thursday": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "friday": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "saturday": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "sunday": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "length": {
+              "type": "string",
+              "description": "Unit: day?"
+            }
+          }
+        },
+        "pay": {
+          "type": "object",
+          "properties": {
+            "timed": {
+              "default": false,
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "type": "string",
+                  "enum": ["hour"]
+                },
+                "minValue": {
+                  "type": "number",
+                  "default": 0
+                },
+                "remote": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "commuteCostSeparate": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "payCommuteTime": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "minDuration": {
+                  "type": "object",
+                  "description": "TODO: Unify with date-helper project",
+                  "properties": {
+                    "string": {
+                      "type": "string",
+                      "default": ""
+                    },
+                    "year": {
+                      "type": "number"
+                    },
+                    "month": {
+                      "type": "number"
+                    },
+                    "day": {
+                      "type": "number"
+                    },
+                    "hours": {
+                      "type": "number"
+                    },
+                    "mins": {
+                      "type": "number"
+                    },
+                    "seconds": {
+                      "type": "number"
+                    },
+                    "time": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "maxWeekDuration": {
+                  "type": "object",
+                  "description": "TODO: Unify with date-helper project",
+                  "properties": {
+                    "string": {
+                      "type": "string",
+                      "default": ""
+                    },
+                    "year": {
+                      "type": "number"
+                    },
+                    "month": {
+                      "type": "number"
+                    },
+                    "day": {
+                      "type": "number"
+                    },
+                    "hours": {
+                      "type": "number"
+                    },
+                    "mins": {
+                      "type": "number"
+                    },
+                    "seconds": {
+                      "type": "number"
+                    },
+                    "time": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "fixed": {
+              "default": false,
+              "type": "object",
+              "properties": {
+                "unit": {
+                  "type": "string",
+                  "enum": ["hour"]
+                },
+                "minValue": {
+                  "type": "number",
+                  "default": 0
+                },
+                "remote": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "commuteCostSeparate": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "payCommuteTime": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "minDuration": {
+                  "type": "object",
+                  "description": "TODO: Unify with date-helper project",
+                  "properties": {
+                    "string": {
+                      "type": "string",
+                      "default": ""
+                    },
+                    "year": {
+                      "type": "number"
+                    },
+                    "month": {
+                      "type": "number"
+                    },
+                    "day": {
+                      "type": "number"
+                    },
+                    "hours": {
+                      "type": "number"
+                    },
+                    "mins": {
+                      "type": "number"
+                    },
+                    "seconds": {
+                      "type": "number"
+                    },
+                    "time": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "maxWeekDuration": {
+                  "type": "object",
+                  "description": "TODO: Unify with date-helper project",
+                  "properties": {
+                    "string": {
+                      "type": "string",
+                      "default": ""
+                    },
+                    "year": {
+                      "type": "number"
+                    },
+                    "month": {
+                      "type": "number"
+                    },
+                    "day": {
+                      "type": "number"
+                    },
+                    "hours": {
+                      "type": "number"
+                    },
+                    "mins": {
+                      "type": "number"
+                    },
+                    "seconds": {
+                      "type": "number"
+                    },
+                    "time": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Timing": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "object",
+          "properties": {
+            "immediate": {
+              "type": "boolean",
+              "default": false
+            },
+            "anytime": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "end": {
+          "type": "object",
+          "properties": {
+            "immediate": {
+              "type": "boolean",
+              "default": false
+            },
+            "anytime": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "days": {
+          "type": "object",
+          "properties": {
+            "monday": {
+              "type": "boolean",
+              "default": false
+            },
+            "tuesday": {
+              "type": "boolean",
+              "default": false
+            },
+            "wednesday": {
+              "type": "boolean",
+              "default": false
+            },
+            "thursday": {
+              "type": "boolean",
+              "default": false
+            },
+            "friday": {
+              "type": "boolean",
+              "default": false
+            },
+            "saturday": {
+              "type": "boolean",
+              "default": false
+            },
+            "sunday": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "length": {
+          "type": "string",
+          "description": "Unit: day?"
+        }
+      }
+    },
+    "Pay": {
+      "type": "object",
+      "properties": {
+        "timed": {
+          "default": false,
+          "type": "object",
+          "properties": {
+            "unit": {
+              "type": "string",
+              "enum": ["hour"]
+            },
+            "minValue": {
+              "type": "number",
+              "default": 0
+            },
+            "remote": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "commuteCostSeparate": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "payCommuteTime": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "minDuration": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            },
+            "maxWeekDuration": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "fixed": {
+          "default": false,
+          "type": "object",
+          "properties": {
+            "unit": {
+              "type": "string",
+              "enum": ["hour"]
+            },
+            "minValue": {
+              "type": "number",
+              "default": 0
+            },
+            "remote": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "commuteCostSeparate": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "payCommuteTime": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "minDuration": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            },
+            "maxWeekDuration": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "PayConditions": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": ["hour"]
+        },
+        "minValue": {
+          "type": "number",
+          "default": 0
+        },
+        "remote": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "commuteCostSeparate": {
+              "type": "boolean",
+              "default": false
+            },
+            "payCommuteTime": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "minDuration": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        },
+        "maxWeekDuration": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "TimingPreferences": {
+      "type": "object",
+      "properties": {
+        "immediate": {
+          "type": "boolean",
+          "default": false
+        },
+        "anytime": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "WeekDays": {
+      "type": "object",
+      "properties": {
+        "monday": {
+          "type": "boolean",
+          "default": false
+        },
+        "tuesday": {
+          "type": "boolean",
+          "default": false
+        },
+        "wednesday": {
+          "type": "boolean",
+          "default": false
+        },
+        "thursday": {
+          "type": "boolean",
+          "default": false
+        },
+        "friday": {
+          "type": "boolean",
+          "default": false
+        },
+        "saturday": {
+          "type": "boolean",
+          "default": false
+        },
+        "sunday": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "createdDate": {
+          "type": "string",
+          "default": ""
+        },
+        "modifiedDate": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "PersonalInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "oneOf": [{
+            "type": "string"
+          }, {
+            "type": "object"
+          }],
+          "@description1": "Can hold any data.",
+          "@description2": "Allowed formats",
+          "@description3": "1. ISO language code",
+          "@description4": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
+          "@description5": "2. ISO language name",
+          "@description6": "3. Script name(Example: katakana)",
+          "@type": ["./iso-language-codes.json", "./iso-language-names.json", "./scripts.json"]
+        },
+        "sex": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        },
+        "birthPlace": {
+          "type": "object",
+          "properties": {
+            "coords": {
+              "type": "object",
+              "properties": {
+                "latitude": {
+                  "type": "string",
+                  "default": ""
+                },
+                "longitude": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            "address": {
+              "description": "Location that can be displayed via text. May differ with language.",
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "default": ""
+                },
+                "country": {
+                  "type": "string",
+                  "default": ""
+                },
+                "state": {
+                  "type": "string",
+                  "default": ""
+                },
+                "town": {
+                  "type": "string",
+                  "default": ""
+                },
+                "subTownOne": {
+                  "type": "string",
+                  "default": ""
+                },
+                "subTownTwo": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsOne": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsTwo": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsThree": {
+                  "type": "string",
+                  "default": ""
+                },
+                "zipCode": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "nativeLanguage": {
+          "type": "string"
+        },
+        "nativeCountry": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "married": {
+          "type": "boolean",
+          "default": false
+        },
+        "children": {
+          "type": "number",
+          "default": 0
+        },
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "spouse": {
+              "type": "boolean",
+              "default": false
+            },
+            "children": {
+              "type": "number",
+              "default": 0
+            },
+            "other": {
+              "type": "number",
+              "default": 0
+            }
+          }
+        }
+      }
+    },
+    "Time": {
+      "type": "object",
+      "description": "TODO: Unify with date-helper project",
+      "properties": {
+        "string": {
+          "type": "string",
+          "default": ""
+        },
+        "year": {
+          "type": "number"
+        },
+        "month": {
+          "type": "number"
+        },
+        "day": {
+          "type": "number"
+        },
+        "hours": {
+          "type": "number"
+        },
+        "mins": {
+          "type": "number"
+        },
+        "seconds": {
+          "type": "number"
+        },
+        "time": {
+          "type": "number"
+        }
+      }
+    },
+    "TimeRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        },
+        "to": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "PersonalName": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "default": ""
+        },
+        "familyName": {
+          "type": "string",
+          "default": ""
+        },
+        "middleName": {
+          "type": "string",
+          "default": ""
+        },
+        "otherNames": {
+          "type": "array"
+        }
+      }
+    },
+    "ContactType": {
+      "type": "object",
+      "properties": {
+        "home": {
+          "type": "string",
+          "default": ""
+        },
+        "work": {
+          "type": "string",
+          "default": ""
+        },
+        "mobile": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "ServiceCredentials": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "physicalAddress": {
+          "type": "object",
+          "properties": {
+            "coords": {
+              "type": "object",
+              "properties": {
+                "latitude": {
+                  "type": "string",
+                  "default": ""
+                },
+                "longitude": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            "address": {
+              "description": "Location that can be displayed via text. May differ with language.",
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "default": ""
+                },
+                "country": {
+                  "type": "string",
+                  "default": ""
+                },
+                "state": {
+                  "type": "string",
+                  "default": ""
+                },
+                "town": {
+                  "type": "string",
+                  "default": ""
+                },
+                "subTownOne": {
+                  "type": "string",
+                  "default": ""
+                },
+                "subTownTwo": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsOne": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsTwo": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsThree": {
+                  "type": "string",
+                  "default": ""
+                },
+                "zipCode": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "emailAddress": {
+          "type": "object",
+          "properties": {
+            "home": {
+              "type": "string",
+              "default": ""
+            },
+            "work": {
+              "type": "string",
+              "default": ""
+            },
+            "mobile": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "phoneNumber": {
+          "type": "object",
+          "properties": {
+            "home": {
+              "type": "string",
+              "default": ""
+            },
+            "work": {
+              "type": "string",
+              "default": ""
+            },
+            "mobile": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "skype": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "line": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "facebook": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "twitter": {
+          "type": "object",
+          "properties": {
+            "username": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
+    "PostalAddress": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "description": "Location that can be displayed via text. May differ with language.",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "default": ""
+            },
+            "country": {
+              "type": "string",
+              "default": ""
+            },
+            "state": {
+              "type": "string",
+              "default": ""
+            },
+            "town": {
+              "type": "string",
+              "default": ""
+            },
+            "subTownOne": {
+              "type": "string",
+              "default": ""
+            },
+            "subTownTwo": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsOne": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsTwo": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsThree": {
+              "type": "string",
+              "default": ""
+            },
+            "zipCode": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "name": {
+          "oneOf": [{
+            "type": "string"
+          }, {
+            "type": "object"
+          }],
+          "@description1": "Can hold any data.",
+          "@description2": "Allowed formats",
+          "@description3": "1. ISO language code",
+          "@description4": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
+          "@description5": "2. ISO language name",
+          "@description6": "3. Script name(Example: katakana)",
+          "@type": ["./iso-language-codes.json", "./iso-language-names.json", "./scripts.json"]
+        }
+      }
+    },
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "string",
+          "default": ""
+        },
+        "longitude": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "coords": {
+          "type": "object",
+          "properties": {
+            "latitude": {
+              "type": "string",
+              "default": ""
+            },
+            "longitude": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "address": {
+          "description": "Location that can be displayed via text. May differ with language.",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "default": ""
+            },
+            "country": {
+              "type": "string",
+              "default": ""
+            },
+            "state": {
+              "type": "string",
+              "default": ""
+            },
+            "town": {
+              "type": "string",
+              "default": ""
+            },
+            "subTownOne": {
+              "type": "string",
+              "default": ""
+            },
+            "subTownTwo": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsOne": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsTwo": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsThree": {
+              "type": "string",
+              "default": ""
+            },
+            "zipCode": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
+    "Address": {
+      "description": "Location that can be displayed via text. May differ with language.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "default": ""
+        },
+        "country": {
+          "type": "string",
+          "default": ""
+        },
+        "state": {
+          "type": "string",
+          "default": ""
+        },
+        "town": {
+          "type": "string",
+          "default": ""
+        },
+        "subTownOne": {
+          "type": "string",
+          "default": ""
+        },
+        "subTownTwo": {
+          "type": "string",
+          "default": ""
+        },
+        "detailsOne": {
+          "type": "string",
+          "default": ""
+        },
+        "detailsTwo": {
+          "type": "string",
+          "default": ""
+        },
+        "detailsThree": {
+          "type": "string",
+          "default": ""
+        },
+        "zipCode": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Notation": {
+      "oneOf": [{
+        "type": "string"
+      }, {
+        "type": "object"
+      }],
+      "@description1": "Can hold any data.",
+      "@description2": "Allowed formats",
+      "@description3": "1. ISO language code",
+      "@description4": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
+      "@description5": "2. ISO language name",
+      "@description6": "3. Script name(Example: katakana)",
+      "@type": ["./iso-language-codes.json", "./iso-language-names.json", "./scripts.json"]
+    },
+    "Portfolio": {
+      "type": "object",
+      "properties": {
+        "works": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "default": ""
+              },
+              "info": {
+                "type": "string",
+                "default": ""
+              },
+              "range": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "to": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "website": {
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "PortfolioWork": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": ""
+        },
+        "info": {
+          "type": "string",
+          "default": ""
+        },
+        "range": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            },
+            "to": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "website": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Work": {
+      "properties": {
+        "contract": {
+          "type": "string",
+          "default": ""
+        },
+        "hours": {
+          "type": "string",
+          "default": ""
+        },
+        "contractedCompany": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": ""
+            },
+            "shares": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "amount": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "employedCompany": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": ""
+            },
+            "shares": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "amount": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "stationedCompany": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "default": ""
+            },
+            "shares": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "amount": {
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "Company": {
+      "properties": {
+        "type": {
+          "type": "string",
+          "default": ""
+        },
+        "shares": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "default": ""
+              },
+              "amount": {
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        }
+      },
+      "type": "object"
+    },
+    "Business": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "default": ""
+        },
+        "address": {
+          "description": "Location that can be displayed via text. May differ with language.",
+          "type": "object",
+          "properties": {
+            "address": {
+              "type": "string",
+              "default": ""
+            },
+            "country": {
+              "type": "string",
+              "default": ""
+            },
+            "state": {
+              "type": "string",
+              "default": ""
+            },
+            "town": {
+              "type": "string",
+              "default": ""
+            },
+            "subTownOne": {
+              "type": "string",
+              "default": ""
+            },
+            "subTownTwo": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsOne": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsTwo": {
+              "type": "string",
+              "default": ""
+            },
+            "detailsThree": {
+              "type": "string",
+              "default": ""
+            },
+            "zipCode": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "founder": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "StockShare": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "amount": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Education": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "type": "object"
+    },
+    "Qualifications": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "range": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "to": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "title": {
+                "type": "string",
+                "default": ""
+              },
+              "info": {
+                "type": "string",
+                "default": ""
+              },
+              "details": {
+                "type": "array"
+              },
+              "location": {
+                "type": "object",
+                "properties": {
+                  "coords": {
+                    "type": "object",
+                    "properties": {
+                      "latitude": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "longitude": {
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "address": {
+                    "description": "Location that can be displayed via text. May differ with language.",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "country": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "state": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "town": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "subTownOne": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "subTownTwo": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailsOne": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailsTwo": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailsThree": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "zipCode": {
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "CommonHistory": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "range": {
+                "type": "object",
+                "properties": {
+                  "from": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "to": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "title": {
+                "type": "string",
+                "default": ""
+              },
+              "info": {
+                "type": "string",
+                "default": ""
+              },
+              "details": {
+                "type": "array"
+              },
+              "location": {
+                "type": "object",
+                "properties": {
+                  "coords": {
+                    "type": "object",
+                    "properties": {
+                      "latitude": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "longitude": {
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  },
+                  "address": {
+                    "description": "Location that can be displayed via text. May differ with language.",
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "country": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "state": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "town": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "subTownOne": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "subTownTwo": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailsOne": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailsTwo": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "detailsThree": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "zipCode": {
+                        "type": "string",
+                        "default": ""
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "CommonHistoryItem": {
+      "type": "object",
+      "properties": {
+        "range": {
+          "type": "object",
+          "properties": {
+            "from": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            },
+            "to": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "title": {
+          "type": "string",
+          "default": ""
+        },
+        "info": {
+          "type": "string",
+          "default": ""
+        },
+        "details": {
+          "type": "array"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "coords": {
+              "type": "object",
+              "properties": {
+                "latitude": {
+                  "type": "string",
+                  "default": ""
+                },
+                "longitude": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            "address": {
+              "description": "Location that can be displayed via text. May differ with language.",
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string",
+                  "default": ""
+                },
+                "country": {
+                  "type": "string",
+                  "default": ""
+                },
+                "state": {
+                  "type": "string",
+                  "default": ""
+                },
+                "town": {
+                  "type": "string",
+                  "default": ""
+                },
+                "subTownOne": {
+                  "type": "string",
+                  "default": ""
+                },
+                "subTownTwo": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsOne": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsTwo": {
+                  "type": "string",
+                  "default": ""
+                },
+                "detailsThree": {
+                  "type": "string",
+                  "default": ""
+                },
+                "zipCode": {
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Skills": {
+      "type": "object",
+      "properties": {
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "default": ""
+              },
+              "time": {
+                "type": "object",
+                "description": "TODO: Unify with date-helper project",
+                "properties": {
+                  "string": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "year": {
+                    "type": "number"
+                  },
+                  "month": {
+                    "type": "number"
+                  },
+                  "day": {
+                    "type": "number"
+                  },
+                  "hours": {
+                    "type": "number"
+                  },
+                  "mins": {
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "type": "number"
+                  },
+                  "time": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Skill": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "time": {
+          "type": "object",
+          "description": "TODO: Unify with date-helper project",
+          "properties": {
+            "string": {
+              "type": "string",
+              "default": ""
+            },
+            "year": {
+              "type": "number"
+            },
+            "month": {
+              "type": "number"
+            },
+            "day": {
+              "type": "number"
+            },
+            "hours": {
+              "type": "number"
+            },
+            "mins": {
+              "type": "number"
+            },
+            "seconds": {
+              "type": "number"
+            },
+            "time": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "Preferences": {
+      "desire": {
+        "type": "string",
+        "default": ""
+      },
+      "desiredWork": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "requests": {
+        "type": "string",
+        "default": ""
+      },
+      "contract": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "commute": {
+        "type": "object",
+        "properties": {
+          "time": {
+            "type": "object",
+            "description": "TODO: Unify with date-helper project",
+            "properties": {
+              "string": {
+                "type": "string",
+                "default": ""
+              },
+              "year": {
+                "type": "number"
+              },
+              "month": {
+                "type": "number"
+              },
+              "day": {
+                "type": "number"
+              },
+              "hours": {
+                "type": "number"
+              },
+              "mins": {
+                "type": "number"
+              },
+              "seconds": {
+                "type": "number"
+              },
+              "time": {
+                "type": "number"
+              }
+            }
+          },
+          "timing": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "object",
+                "properties": {
+                  "immediate": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "anytime": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              },
+              "end": {
+                "type": "object",
+                "properties": {
+                  "immediate": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "anytime": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              },
+              "days": {
+                "type": "object",
+                "properties": {
+                  "monday": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "tuesday": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "wednesday": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "thursday": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "friday": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "saturday": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "sunday": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              },
+              "length": {
+                "type": "string",
+                "description": "Unit: day?"
+              }
+            }
+          },
+          "pay": {
+            "type": "object",
+            "properties": {
+              "timed": {
+                "default": false,
+                "type": "object",
+                "properties": {
+                  "unit": {
+                    "type": "string",
+                    "enum": ["hour"]
+                  },
+                  "minValue": {
+                    "type": "number",
+                    "default": 0
+                  },
+                  "remote": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "commuteCostSeparate": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "payCommuteTime": {
+                        "type": "boolean",
+                        "default": false
+                      }
+                    }
+                  },
+                  "minDuration": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "maxWeekDuration": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              },
+              "fixed": {
+                "default": false,
+                "type": "object",
+                "properties": {
+                  "unit": {
+                    "type": "string",
+                    "enum": ["hour"]
+                  },
+                  "minValue": {
+                    "type": "number",
+                    "default": 0
+                  },
+                  "remote": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "commuteCostSeparate": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "payCommuteTime": {
+                        "type": "boolean",
+                        "default": false
+                      }
+                    }
+                  },
+                  "minDuration": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "maxWeekDuration": {
+                    "type": "object",
+                    "description": "TODO: Unify with date-helper project",
+                    "properties": {
+                      "string": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "year": {
+                        "type": "number"
+                      },
+                      "month": {
+                        "type": "number"
+                      },
+                      "day": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "mins": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      },
+                      "time": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "timing": {
+        "type": "object",
+        "properties": {
+          "start": {
+            "type": "object",
+            "properties": {
+              "immediate": {
+                "type": "boolean",
+                "default": false
+              },
+              "anytime": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          },
+          "end": {
+            "type": "object",
+            "properties": {
+              "immediate": {
+                "type": "boolean",
+                "default": false
+              },
+              "anytime": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          },
+          "days": {
+            "type": "object",
+            "properties": {
+              "monday": {
+                "type": "boolean",
+                "default": false
+              },
+              "tuesday": {
+                "type": "boolean",
+                "default": false
+              },
+              "wednesday": {
+                "type": "boolean",
+                "default": false
+              },
+              "thursday": {
+                "type": "boolean",
+                "default": false
+              },
+              "friday": {
+                "type": "boolean",
+                "default": false
+              },
+              "saturday": {
+                "type": "boolean",
+                "default": false
+              },
+              "sunday": {
+                "type": "boolean",
+                "default": false
+              }
+            }
+          },
+          "length": {
+            "type": "string",
+            "description": "Unit: day?"
+          }
+        }
+      },
+      "pay": {
+        "type": "object",
+        "properties": {
+          "timed": {
+            "default": false,
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string",
+                "enum": ["hour"]
+              },
+              "minValue": {
+                "type": "number",
+                "default": 0
+              },
+              "remote": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "commuteCostSeparate": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "payCommuteTime": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              },
+              "minDuration": {
+                "type": "object",
+                "description": "TODO: Unify with date-helper project",
+                "properties": {
+                  "string": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "year": {
+                    "type": "number"
+                  },
+                  "month": {
+                    "type": "number"
+                  },
+                  "day": {
+                    "type": "number"
+                  },
+                  "hours": {
+                    "type": "number"
+                  },
+                  "mins": {
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "type": "number"
+                  },
+                  "time": {
+                    "type": "number"
+                  }
+                }
+              },
+              "maxWeekDuration": {
+                "type": "object",
+                "description": "TODO: Unify with date-helper project",
+                "properties": {
+                  "string": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "year": {
+                    "type": "number"
+                  },
+                  "month": {
+                    "type": "number"
+                  },
+                  "day": {
+                    "type": "number"
+                  },
+                  "hours": {
+                    "type": "number"
+                  },
+                  "mins": {
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "type": "number"
+                  },
+                  "time": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "fixed": {
+            "default": false,
+            "type": "object",
+            "properties": {
+              "unit": {
+                "type": "string",
+                "enum": ["hour"]
+              },
+              "minValue": {
+                "type": "number",
+                "default": 0
+              },
+              "remote": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "commuteCostSeparate": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "payCommuteTime": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              },
+              "minDuration": {
+                "type": "object",
+                "description": "TODO: Unify with date-helper project",
+                "properties": {
+                  "string": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "year": {
+                    "type": "number"
+                  },
+                  "month": {
+                    "type": "number"
+                  },
+                  "day": {
+                    "type": "number"
+                  },
+                  "hours": {
+                    "type": "number"
+                  },
+                  "mins": {
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "type": "number"
+                  },
+                  "time": {
+                    "type": "number"
+                  }
+                }
+              },
+              "maxWeekDuration": {
+                "type": "object",
+                "description": "TODO: Unify with date-helper project",
+                "properties": {
+                  "string": {
+                    "type": "string",
+                    "default": ""
+                  },
+                  "year": {
+                    "type": "number"
+                  },
+                  "month": {
+                    "type": "number"
+                  },
+                  "day": {
+                    "type": "number"
+                  },
+                  "hours": {
+                    "type": "number"
+                  },
+                  "mins": {
+                    "type": "number"
+                  },
+                  "seconds": {
+                    "type": "number"
+                  },
+                  "time": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "keywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "Hobby": {
+      "type": "object",
+      "properties": {
+        "hobbies": {}
+      }
+    },
+    "Templates": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "default": "camelCase"
+        },
+        "list": {
+          "type": "array"
+        }
+      }
+    },
+    "Media": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "object",
+          "properties": {
+            "images": {
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "properties": {
+        "src": {
+          "type": "string",
+          "default": ""
+        },
+        "data": {
+          "description": "Arbitrary data?"
+        },
+        "dimensions": {
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Images": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "array"
+        }
+      }
+    },
+    "Application": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "string",
+          "default": ""
+        },
+        "applicationReason": {
+          "type": "string",
+          "default": ""
+        },
+        "commute": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "object",
+              "description": "TODO: Unify with date-helper project",
+              "properties": {
+                "string": {
+                  "type": "string",
+                  "default": ""
+                },
+                "year": {
+                  "type": "number"
+                },
+                "month": {
+                  "type": "number"
+                },
+                "day": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "mins": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                },
+                "time": {
+                  "type": "number"
+                }
+              }
+            },
+            "timing": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "type": "object",
+                  "properties": {
+                    "immediate": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "anytime": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "end": {
+                  "type": "object",
+                  "properties": {
+                    "immediate": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "anytime": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "days": {
+                  "type": "object",
+                  "properties": {
+                    "monday": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "tuesday": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "wednesday": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "thursday": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "friday": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "saturday": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "sunday": {
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "length": {
+                  "type": "string",
+                  "description": "Unit: day?"
+                }
+              }
+            },
+            "pay": {
+              "type": "object",
+              "properties": {
+                "timed": {
+                  "default": false,
+                  "type": "object",
+                  "properties": {
+                    "unit": {
+                      "type": "string",
+                      "enum": ["hour"]
+                    },
+                    "minValue": {
+                      "type": "number",
+                      "default": 0
+                    },
+                    "remote": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "commuteCostSeparate": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "payCommuteTime": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      }
+                    },
+                    "minDuration": {
+                      "type": "object",
+                      "description": "TODO: Unify with date-helper project",
+                      "properties": {
+                        "string": {
+                          "type": "string",
+                          "default": ""
+                        },
+                        "year": {
+                          "type": "number"
+                        },
+                        "month": {
+                          "type": "number"
+                        },
+                        "day": {
+                          "type": "number"
+                        },
+                        "hours": {
+                          "type": "number"
+                        },
+                        "mins": {
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "type": "number"
+                        },
+                        "time": {
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "maxWeekDuration": {
+                      "type": "object",
+                      "description": "TODO: Unify with date-helper project",
+                      "properties": {
+                        "string": {
+                          "type": "string",
+                          "default": ""
+                        },
+                        "year": {
+                          "type": "number"
+                        },
+                        "month": {
+                          "type": "number"
+                        },
+                        "day": {
+                          "type": "number"
+                        },
+                        "hours": {
+                          "type": "number"
+                        },
+                        "mins": {
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "type": "number"
+                        },
+                        "time": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                },
+                "fixed": {
+                  "default": false,
+                  "type": "object",
+                  "properties": {
+                    "unit": {
+                      "type": "string",
+                      "enum": ["hour"]
+                    },
+                    "minValue": {
+                      "type": "number",
+                      "default": 0
+                    },
+                    "remote": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "commuteCostSeparate": {
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "payCommuteTime": {
+                          "type": "boolean",
+                          "default": false
+                        }
+                      }
+                    },
+                    "minDuration": {
+                      "type": "object",
+                      "description": "TODO: Unify with date-helper project",
+                      "properties": {
+                        "string": {
+                          "type": "string",
+                          "default": ""
+                        },
+                        "year": {
+                          "type": "number"
+                        },
+                        "month": {
+                          "type": "number"
+                        },
+                        "day": {
+                          "type": "number"
+                        },
+                        "hours": {
+                          "type": "number"
+                        },
+                        "mins": {
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "type": "number"
+                        },
+                        "time": {
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "maxWeekDuration": {
+                      "type": "object",
+                      "description": "TODO: Unify with date-helper project",
+                      "properties": {
+                        "string": {
+                          "type": "string",
+                          "default": ""
+                        },
+                        "year": {
+                          "type": "number"
+                        },
+                        "month": {
+                          "type": "number"
+                        },
+                        "day": {
+                          "type": "number"
+                        },
+                        "hours": {
+                          "type": "number"
+                        },
+                        "mins": {
+                          "type": "number"
+                        },
+                        "seconds": {
+                          "type": "number"
+                        },
+                        "time": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "JobSite": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": ""
+        },
+        "description": {
+          "type": "string",
+          "default": ""
+        },
+        "image": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "Api": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "SoftwareDocumentation": {
+      "type": "object",
+      "properties": {}
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "api": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "mainType": {
+          "type": "string",
+          "enum": ["npm", "composer"],
+          "description": "Specifies which config to use as main. Important when clashes occur."
+        },
+        "temp": {
+          "type": "string"
+        },
+        "documentation": {
+          "type": "object",
+          "properties": {}
+        },
+        "test": {
+          "type": "object",
+          "properties": {
+            "required": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["git", "readme"]
+              }
+            },
+            "allowed": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["npm", "composer"]
+              }
+            },
+            "status": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["git-committed", "git-pushed"]
+              }
+            }
+          }
+        },
+        "sourcePaths": {
+          "type": "array",
+          "items": [{
+            "type": "string"
+          }]
+        },
+        "testPaths": {
+          "type": "array",
+          "items": [{
+            "type": "string"
+          }]
+        },
+        "inputPaths": {
+          "type": "array",
+          "items": [{
+            "type": "string"
+          }]
+        },
+        "outputPaths": {
+          "type": "array",
+          "items": [{
+            "type": "string"
+          }]
+        }
+      }
+    },
+    "Projects": {
+      "type": "object",
+      "properties": {
+        "hierarchy": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "object"
+            }
+          },
+          "ignoreProject": {
+            "type": "string",
+            "default": "$_"
+          }
+        },
+        "api": {
+          "type": "object",
+          "properties": {
+            "owner": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "default": {
+          "type": "object",
+          "properties": {}
+        },
+        "common": {
+          "type": "object",
+          "properties": {}
+        },
+        "test": {
+          "type": "object",
+          "properties": {
+            "tests": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "required": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["git", "readme"]
+                    }
+                  },
+                  "allowed": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["npm", "composer"]
+                    }
+                  },
+                  "status": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["git-committed", "git-pushed"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "access": {
+          "enum": ["public", "private", "unsorted"],
+          "default": "unsorted"
+        }
+      }
+    },
+    "ProjectTest": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["git", "readme"]
+          }
+        },
+        "allowed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["npm", "composer"]
+          }
+        },
+        "status": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["git-committed", "git-pushed"]
+          }
+        }
+      }
+    },
+    "DriveMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object."
+          },
+          "check": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "string",
+                "description": "Exact size"
+              },
+              "format": {
+                "type": "string",
+                "description": "Drive format"
+              },
+              "path": {
+                "type": "string",
+                "description": "Path to a file or directory that always exists"
+              }
+            }
+          }
+        }
+      }
+    },
+    "DriveMapping": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object."
+        },
+        "check": {
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "string",
+              "description": "Exact size"
+            },
+            "format": {
+              "type": "string",
+              "description": "Drive format"
+            },
+            "path": {
+              "type": "string",
+              "description": "Path to a file or directory that always exists"
+            }
+          }
+        }
+      }
+    },
+    "DriveSettings": {
+      "type": "object",
+      "properties": {
+        "developmentDirectories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projectCollections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imageDirectories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "videoDirectories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "documentDirectories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "backupDirectories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ManagementSettings": {
+      "type": "object",
+      "properties": {}
+    },
+    "DevelopmentSettings": {
+      "type": "object",
+      "properties": {
+        "installations": {
+          "type": "string"
+        },
+        "assets": {
+          "type": "string",
+          "description": "Path to directory of flat OR nested hierarchy of asset files."
+        },
+        "binaries": {
+          "type": "string",
+          "description": "Path to directory of flat hierarchy of binaries."
+        },
+        "shortcuts": {
+          "type": "string",
+          "description": "Path to directory with flat hierarchy of shortcuts."
+        },
+        "temp": {
+          "type": "string",
+          "description": "Path to directory of temporary data. Temporary data is considered DELETABLE."
+        },
+        "backup": {
+          "type": "string",
+          "description": "Path to directory of backup data."
+        },
+        "projectCollections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "hierarchy": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "object"
+                  }
+                },
+                "ignoreProject": {
+                  "type": "string",
+                  "default": "$_"
+                }
+              },
+              "api": {
+                "type": "object",
+                "properties": {
+                  "owner": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                }
+              },
+              "default": {
+                "type": "object",
+                "properties": {}
+              },
+              "common": {
+                "type": "object",
+                "properties": {}
+              },
+              "test": {
+                "type": "object",
+                "properties": {
+                  "tests": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "required": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": ["git", "readme"]
+                          }
+                        },
+                        "allowed": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": ["npm", "composer"]
+                          }
+                        },
+                        "status": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": ["git-committed", "git-pushed"]
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "access": {
+                "enum": ["public", "private", "unsorted"],
+                "default": "unsorted"
+              }
+            }
+          }
+        },
+        "issues": {
+          "type": "string",
+          "description": "Path to directory of flat OR nested hierarchy of issue files."
+        },
+        "management": {
+          "type": "string",
+          "description": "Path to directory of management. Expects directly of format ManagementSettings."
+        }
+      }
+    }
+  }
+}

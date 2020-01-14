@@ -1,23 +1,26 @@
 {
-    "name": "schema",
-    "version": "1.0.0",
-    "description": "A collection of schema.\r Currently, no specific grouping.",
-    "main": "index.js",
-    "scripts": {
-      "test": "npm run test-json-schema",
-      "test-json-schema": "./node_modules/.bin/ajv compile -s ./schema/json-schema/index.json"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/goldingdamien/schema.git"
-    },
-    "author": "Damien Golding",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/goldingdamien/schema/issues"
-    },
-    "homepage": "https://github.com/goldingdamien/schema#readme",
-    "dependencies": {
-        "ajv-cli": "^3.0.0"
-    }
+  "name": "schema",
+  "version": "1.0.0",
+  "description": "A collection of schema.\r Currently, no specific grouping.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test-json-schema",
+    "test-json-schema": "./node_modules/.bin/ajv compile -s ./schema/json-schema/index.json",
+    "combine-json-schema": "node combine-json-schema.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goldingdamien/schema.git"
+  },
+  "author": "Damien Golding",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/goldingdamien/schema/issues"
+  },
+  "homepage": "https://github.com/goldingdamien/schema#readme",
+  "dependencies": {
+    "ajv-cli": "^3.0.0",
+    "fs-extra": "^8.1.0",
+    "json-schema-ref-parser": "^7.1.3"
+  }
 }
