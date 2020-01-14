@@ -269,7 +269,10 @@
           "default": ""
         },
         "otherNames": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -470,7 +473,9 @@
     },
 
     "Work": {
-      "$ref": "#/definitions/CommonHistory",
+      "allOf": [{
+        "$ref": "#/definitions/CommonHistory"
+      }],
       "properties": {
         "contract": {
           "type": "string",
@@ -544,7 +549,9 @@
     },
 
     "Education": {
-      "$ref": "#/definitions/CommonHistory",
+      "allOf": [{
+        "$ref": "#/definitions/CommonHistory"
+      }],
       "properties": {
         "status": {
           "type": "string",
@@ -554,7 +561,9 @@
     },
 
     "Qualifications": {
-      "$ref": "#/definitions/CommonHistory"
+      "allOf": [{
+        "$ref": "#/definitions/CommonHistory"
+      }]
     },
 
     "CommonHistory": {
@@ -584,7 +593,10 @@
           "default": ""
         },
         "details": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "location": {
           "$ref": "#/definitions/Location"
@@ -670,7 +682,10 @@
           "default": "camelCase"
         },
         "list": {
-          "type": "array"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -794,27 +809,27 @@
         },
         "sourcePaths": {
           "type": "array",
-          "items": [{
+          "items": {
             "type": "string"
-          }]
+          }
         },
         "testPaths": {
           "type": "array",
-          "items": [{
+          "items": {
             "type": "string"
-          }]
+          }
         },
         "inputPaths": {
           "type": "array",
-          "items": [{
+          "items": {
             "type": "string"
-          }]
+          }
         },
         "outputPaths": {
           "type": "array",
-          "items": [{
+          "items": {
             "type": "string"
-          }]
+          }
         }
       }
     },
