@@ -1,267 +1,1017 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "definitions": {
-        "Api": {
-            "type": "object",
-            "properties": {
-                "owner": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                }
-            }
-        },
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "definitions": {
+    "Name": {
+      "$ref": "#definitions/Notation"
+    },
 
-        "SoftwareDocumentation": {
-            "type": "object",
-            "properties": {}
-        },
+    "JapanOccupation": {
+      "type": "string",
+      "description": "https://www.hellowork.go.jp/info/job_dictionary.html"
+    },
 
-        "Project": {
-            "type": "object",
-            "properties": {
-                "api": {
-                    "$ref": "#definitions/Api"
-                },
-                "mainType": {
-                    "type": "string",
-                    "enum": [
-                        "npm", "composer"
-                    ],
-                    "description": "Specifies which config to use as main. Important when clashes occur."
-                },
-                "temp": {
-                    "type": "string"
-                },
-                "documentation": {
-                    "$ref": "#definitions/SoftwareDocumentation"
-                },
-                "test": {
-                    "$ref": "#definitions/ProjectTest"
-                },
-                "sourcePaths": {
-                    "type": "array",
-                    "items": [{
-                        "type": "string"
-                    }]
-                },
-                "testPaths": {
-                    "type": "array",
-                    "items": [{
-                        "type": "string"
-                    }]
-                },
-                "inputPaths": {
-                    "type": "array",
-                    "items": [{
-                        "type": "string"
-                    }]
-                },
-                "outputPaths": {
-                    "type": "array",
-                    "items": [{
-                        "type": "string"
-                    }]
-                }
-            }
+    "Commute": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "$ref": "#definitions/Time"
         },
+        "timing": {
+          "$ref": "#definitions/Timing"
+        },
+        "pay": {
+          "$ref": "#definitions/Pay"
+        }
+      }
+    },
 
-        "Projects": {
-            "type": "object",
-            "properties": {
-                "hierarchy": {
-                    "properties": {
-                        "type": {
-                            "oneOf": [{
-                                "$ref": "#definitions/flatCollection"
-                            }]
-                        },
-                        "ignoreProject": {
-                            "type": "string",
-                            "default": "$_"
-                        }
-                    }
-                },
-                "api": {
-                    "$ref": "#definitions/Api"
-                },
-                "default": {
-                    "type": "object",
-                    "properties": {}
-                },
-                "common": {
-                    "type": "object",
-                    "properties": {}
-                },
-                "test": {
-                    "type": "object",
-                    "properties": {
-                        "tests": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#definitions/ProjectTest"
-                            }
-                        }
-                    }
-                },
-                "access": {
-                    "enum": [
-                        "public", "private", "unsorted"
-                    ],
-                    "default": "unsorted"
-                }
-            }
+    "Timing": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "$ref": "#definitions/TimingPreferences"
         },
+        "end": {
+          "$ref": "#definitions/TimingPrefrences"
+        },
+        "days": {
+          "$ref": "#definitions/WeekDays"
+        },
+        "length": {
+          "type": "string",
+          "description": "Unit: day?"
+        }
+      }
+    },
 
-        "ProjectTest": {
-            "type": "object",
-            "properties": {
-                "required": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": ["git", "readme"]
-                    }
-                },
-                "allowed": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": ["npm", "composer"]
-                    }
-                },
-                "status": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": ["git-committed", "git-pushed"]
-                    }
-                }
-            }
+    "Pay": {
+      "type": "object",
+      "properties": {
+        "timed": {
+          "$ref": "#definitions/PayConditions",
+          "default": false
         },
-        "DriveMappings": {
+        "fixed": {
+          "$ref": "#definitions/PayConditions",
+          "default": false
+        }
+      }
+    },
+
+    "PayConditions": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": ["hour"]
+        },
+        "minValue": {
+          "type": "number",
+          "default": 0
+        },
+        "remote": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "commuteCostSeparate": {
+              "type": "boolean",
+              "default": false
+            },
+            "payCommuteTime": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        },
+        "minDuration": {
+          "$ref": "#definitions/Time"
+        },
+        "maxWeekDuration": {
+          "$ref": "#definitions/Time"
+        }
+      }
+    },
+
+    "TimingPreferences": {
+      "type": "object",
+      "properties": {
+        "immediate": {
+          "type": "boolean",
+          "default": false
+        },
+        "anytime": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+
+    "WeekDays": {
+      "type": "object",
+      "properties": {
+        "monday": {
+          "type": "boolean",
+          "default": false
+        },
+        "tuesday": {
+          "type": "boolean",
+          "default": false
+        },
+        "wednesday": {
+          "type": "boolean",
+          "default": false
+        },
+        "thursday": {
+          "type": "boolean",
+          "default": false
+        },
+        "friday": {
+          "type": "boolean",
+          "default": false
+        },
+        "saturday": {
+          "type": "boolean",
+          "default": false
+        },
+        "sunday": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+
+    "Status": {
+      "type": "object",
+      "properties": {
+        "createdDate": {
+          "type": "string",
+          "default": ""
+        },
+        "modifiedDate": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+
+    "PersonalInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#definitions/Name"
+        },
+        "sex": {
+          "type": "string"
+        },
+        "birthDate": {
+          "$ref": "#definitions/Time"
+        },
+        "birthPlace": {
+          "$ref": "#definitions/Location"
+        },
+        "nativeLanguage": {
+          "type": "string"
+        },
+        "nativeCountry": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "married": {
+          "type": "boolean",
+          "default": false
+        },
+        "children": {
+          "type": "number",
+          "default": 0
+        },
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "spouse": {
+              "type": "boolean",
+              "default": false
+            },
+            "children": {
+              "type": "number",
+              "default": 0
+            },
+            "other": {
+              "type": "number",
+              "default": 0
+            }
+          }
+        }
+      }
+    },
+
+    "Time": {
+      "type": "object",
+      "description": "TODO: Unify with date-helper project",
+      "properties": {
+        "string": {
+          "type": "string",
+          "default": ""
+        },
+        "year": {
+          "type": "number"
+        },
+        "month": {
+          "type": "number"
+        },
+        "day": {
+          "type": "number"
+        },
+        "hours": {
+          "type": "number"
+        },
+        "mins": {
+          "type": "number"
+        },
+        "seconds": {
+          "type": "number"
+        },
+        "time": {
+          "type": "number"
+        }
+      }
+    },
+
+    "TimeRange": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "$ref": "#definitions/Time"
+        },
+        "to": {
+          "$ref": "#definitions/Time"
+        }
+      }
+    },
+
+    "PersonalName": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "default": ""
+        },
+        "familyName": {
+          "type": "string",
+          "default": ""
+        },
+        "middleName": {
+          "type": "string",
+          "default": ""
+        },
+        "otherNames": {
+          "type": "array"
+        }
+      }
+    },
+
+    "ContactType": {
+      "type": "object",
+      "properties": {
+        "home": {
+          "type": "string",
+          "default": ""
+        },
+        "work": {
+          "type": "string",
+          "default": ""
+        },
+        "mobile": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+
+    "ServiceCredentials": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+
+    "Contact": {
+      "type": "object",
+      "properties": {
+        "physicalAddress": {
+          "$ref": "#definitions/Location"
+        },
+        "emailAddress": {
+          "$ref": "#definitions/ContactType"
+        },
+        "phoneNumber": {
+          "$ref": "#definitions/ContactType"
+        },
+        "skype": {
+          "$ref": "#definitions/ServiceCredentials"
+        },
+        "line": {
+          "$ref": "#definitions/ServiceCredentials"
+        },
+        "facebook": {
+          "$ref": "#definitions/ServiceCredentials"
+        },
+        "twitter": {
+          "$ref": "#definitions/ServiceCredentials"
+        }
+      }
+    },
+
+    "PostalAddress": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "$ref": "#definitions/Address"
+        },
+        "name": {
+          "$ref": "#definitions/Name"
+        }
+      }
+    },
+
+    "Coordinates": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "string",
+          "default": ""
+        },
+        "longitude": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+
+    "Location": {
+      "type": "object",
+      "properties": {
+        "coords": {
+          "$ref": "#definitions/Coordinates"
+        },
+        "address": {
+          "$ref": "#definitions/Address"
+        }
+      }
+    },
+
+    "Address": {
+      "description": "Location that can be displayed via text. May differ with language.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "default": ""
+        },
+        "country": {
+          "type": "string",
+          "default": ""
+        },
+        "state": {
+          "type": "string",
+          "default": ""
+        },
+        "town": {
+          "type": "string",
+          "default": ""
+        },
+        "subTownOne": {
+          "type": "string",
+          "default": ""
+        },
+        "subTownTwo": {
+          "type": "string",
+          "default": ""
+        },
+        "detailsOne": {
+          "type": "string",
+          "default": ""
+        },
+        "detailsTwo": {
+          "type": "string",
+          "default": ""
+        },
+        "detailsThree": {
+          "type": "string",
+          "default": ""
+        },
+        "zipCode": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+
+    "Notation": {
+      "oneOf": [{
+          "type": "string"
+        },
+        {
+          "type": "object"
+        }
+      ],
+      "@description1": "Can hold any data.",
+      "@description2": "Allowed formats",
+      "@description3": "1. ISO language code",
+      "@description4": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
+      "@description5": "2. ISO language name",
+      "@description6": "3. Script name(Example: katakana)",
+      "@type": [
+        "./iso-language-codes.json",
+        "./iso-language-names.json",
+        "./scripts.json"
+      ]
+    },
+
+    "Portfolio": {
+      "type": "object",
+      "properties": {
+        "works": {
+          "type": "array",
+          "items": {
+            "$ref": "#definitions/PortfolioWork"
+          }
+        }
+
+      },
+
+      "PortfolioWork": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "default": ""
+          },
+          "info": {
+            "type": "string",
+            "default": ""
+          },
+          "range": {
+            "$ref": "#definitions/TimeRange"
+          },
+          "website": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+
+      "Work": {
+        "$ref": "#definitions/CommonHistory",
+        "properties": {
+          "contract": {
+            "type": "string",
+            "default": ""
+          },
+          "hours": {
+            "type": "string",
+            "default": ""
+          },
+          "contractedCompany": {
+            "$ref": "#definitions/Company"
+          },
+          "employedCompany": {
+            "$ref": "#definitions/Company"
+          },
+          "stationedCompany": {
+            "$ref": "#definitions/Company"
+          }
+        }
+      },
+
+      "Company": {
+        "$ref": "#definitions/Business",
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "shares": {
             "type": "array",
             "items": {
-                "$ref": "#definitions/DriveMapping"
+              "$ref": "#definitions/StockShare"
             }
-        },
+          }
+        }
+      },
 
-        "DriveMapping": {
-            "type": "object",
+      "Business": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "url": {
+            "type": "string",
+            "default": ""
+          },
+          "address": {
+            "$ref": "#definitions/Address"
+          },
+          "founder": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+
+      "StockShare": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "amount": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+
+      "Education": {
+        "$ref": "#definitions/CommonHistory",
+        "properties": {
+          "status": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+
+      "Qualifications": {
+        "$ref": "#definitions/CommonHistory"
+      },
+
+      "CommonHistory": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#definitions/CommonHistoryItem"
+            }
+          }
+        }
+      },
+
+      "CommonHistoryItem": {
+        "type": "object",
+        "properties": {
+          "range": {
+            "$ref": "#definitions/TimeRange"
+          },
+          "title": {
+            "type": "string",
+            "default": ""
+          },
+          "info": {
+            "type": "string",
+            "default": ""
+          },
+          "details": {
+            "type": "array"
+          },
+          "location": {
+            "$ref": "#definitions/Location"
+          }
+        }
+      },
+
+      "Skills": {
+        "type": "object",
+        "properties": {
+          "type": "array",
+          "items": {
+            "$ref": "#definitions/Skill"
+          }
+        }
+      },
+
+      "Skill": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "time": {
+            "$ref": "#definitions/Time"
+          }
+        }
+      },
+
+      "Preferences": {
+        "desire": {
+          "type": "string",
+          "default": ""
+        },
+        "desiredWork": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requests": {
+          "type": "string",
+          "default": ""
+        },
+        "contract": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "commute": {
+          "$ref": "#definitions/Commute"
+        },
+        "timing": {
+          "$ref": "#definitions/Timing"
+        },
+        "pay": {
+          "$ref": "#definitions/Pay"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+
+      "Hobby": {
+        "type": "object",
+        "properties": {
+          "hobbies": {}
+        }
+      },
+
+      "Templates": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "type": "string",
+            "default": "camelCase"
+          },
+          "list": {
+            "type": "array"
+          }
+        }
+      },
+
+      "Media": {
+        "type": "object",
+        "properties": {
+          "images": {
+            "$ref": "#definitions/Images"
+          }
+        }
+      },
+
+      "Image": {
+        "type": "object",
+        "properties": {
+          "src": {
+            "type": "string",
+            "default": ""
+          },
+          "data": {
+            "description": "Arbitrary data?"
+          },
+          "dimensions": {
+            "width": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            }
+          }
+        }
+      },
+
+      "Images": {
+        "type": "object",
+        "properties": {
+          "images": {
+            "type": "array"
+          }
+        }
+      },
+
+      "Application": {
+        "type": "object",
+        "properties": {
+          "requests": {
+            "type": "string",
+            "default": ""
+          },
+          "applicationReason": {
+            "type": "string",
+            "default": ""
+          },
+          "commute": {
+            "$ref": "#definitions/Commute"
+          }
+        }
+      },
+
+      "JobSite": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "default": ""
+          },
+          "image": {
+            "type": "string",
+            "default": ""
+          },
+          "url": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+
+      "Api": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+
+      "SoftwareDocumentation": {
+        "type": "object",
+        "properties": {}
+      },
+
+      "Project": {
+        "type": "object",
+        "properties": {
+          "api": {
+            "$ref": "#definitions/Api"
+          },
+          "mainType": {
+            "type": "string",
+            "enum": [
+              "npm", "composer"
+            ],
+            "description": "Specifies which config to use as main. Important when clashes occur."
+          },
+          "temp": {
+            "type": "string"
+          },
+          "documentation": {
+            "$ref": "#definitions/SoftwareDocumentation"
+          },
+          "test": {
+            "$ref": "#definitions/ProjectTest"
+          },
+          "sourcePaths": {
+            "type": "array",
+            "items": [{
+              "type": "string"
+            }]
+          },
+          "testPaths": {
+            "type": "array",
+            "items": [{
+              "type": "string"
+            }]
+          },
+          "inputPaths": {
+            "type": "array",
+            "items": [{
+              "type": "string"
+            }]
+          },
+          "outputPaths": {
+            "type": "array",
+            "items": [{
+              "type": "string"
+            }]
+          }
+        }
+      },
+
+      "Projects": {
+        "type": "object",
+        "properties": {
+          "hierarchy": {
             "properties": {
-                "key": {
-                    "type": "string",
-                    "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object."
-                },
-                "check": {
-                    "type": "object",
-                    "properties": {
-                        "size": {
-                            "type": "string",
-                            "description": "Exact size"
-                        },
-                        "format": {
-                            "type": "string",
-                            "description": "Drive format"
-                        },
-                        "path": {
-                            "type": "string",
-                            "description": "Path to a file or directory that always exists"
-                        }
-                    }
-                }
+              "type": {
+                "oneOf": [{
+                  "$ref": "#definitions/flatCollection"
+                }]
+              },
+              "ignoreProject": {
+                "type": "string",
+                "default": "$_"
+              }
             }
-        },
-
-        "DriveSettings": {
-            "type": "object",
-            "properties": {
-                "developmentDirectories": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "projectCollections": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "imageDirectories": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "videoDirectories": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "documentDirectories": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "backupDirectories": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
-        },
-
-        "ManagementSettings": {
+          },
+          "api": {
+            "$ref": "#definitions/Api"
+          },
+          "default": {
             "type": "object",
             "properties": {}
-        },
-
-        "DevelopmentSettings": {
+          },
+          "common": {
+            "type": "object",
+            "properties": {}
+          },
+          "test": {
             "type": "object",
             "properties": {
-                "installations": {
-                    "type": "string"
-                },
-                "assets": {
-                    "type": "string",
-                    "description": "Path to directory of flat OR nested hierarchy of asset files."
-                },
-                "binaries": {
-                    "type": "string",
-                    "description": "Path to directory of flat hierarchy of binaries."
-                },
-                "shortcuts": {
-                    "type": "string",
-                    "description": "Path to directory with flat hierarchy of shortcuts."
-                },
-                "temp": {
-                    "type": "string",
-                    "description": "Path to directory of temporary data. Temporary data is considered DELETABLE."
-                },
-                "backup": {
-                    "type": "string",
-                    "description": "Path to directory of backup data."
-                },
-                "projectCollections": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#definitions/Projects"
-                    }
-                },
-                "issues": {
-                    "type": "string",
-                    "description": "Path to directory of flat OR nested hierarchy of issue files."
-                },
-                "management": {
-                    "type": "string",
-                    "description": "Path to directory of management. Expects directly of format ManagementSettings."
+              "tests": {
+                "type": "array",
+                "items": {
+                  "$ref": "#definitions/ProjectTest"
                 }
+              }
             }
+          },
+          "access": {
+            "enum": [
+              "public", "private", "unsorted"
+            ],
+            "default": "unsorted"
+          }
         }
+      },
+
+      "ProjectTest": {
+        "type": "object",
+        "properties": {
+          "required": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["git", "readme"]
+            }
+          },
+          "allowed": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["npm", "composer"]
+            }
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["git-committed", "git-pushed"]
+            }
+          }
+        }
+      },
+      "DriveMappings": {
+        "type": "array",
+        "items": {
+          "$ref": "#definitions/DriveMapping"
+        }
+      },
+
+      "DriveMapping": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object."
+          },
+          "check": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "string",
+                "description": "Exact size"
+              },
+              "format": {
+                "type": "string",
+                "description": "Drive format"
+              },
+              "path": {
+                "type": "string",
+                "description": "Path to a file or directory that always exists"
+              }
+            }
+          }
+        }
+      },
+
+      "DriveSettings": {
+        "type": "object",
+        "properties": {
+          "developmentDirectories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "projectCollections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "imageDirectories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "videoDirectories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "documentDirectories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "backupDirectories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+
+      "ManagementSettings": {
+        "type": "object",
+        "properties": {}
+      },
+
+      "DevelopmentSettings": {
+        "type": "object",
+        "properties": {
+          "installations": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "string",
+            "description": "Path to directory of flat OR nested hierarchy of asset files."
+          },
+          "binaries": {
+            "type": "string",
+            "description": "Path to directory of flat hierarchy of binaries."
+          },
+          "shortcuts": {
+            "type": "string",
+            "description": "Path to directory with flat hierarchy of shortcuts."
+          },
+          "temp": {
+            "type": "string",
+            "description": "Path to directory of temporary data. Temporary data is considered DELETABLE."
+          },
+          "backup": {
+            "type": "string",
+            "description": "Path to directory of backup data."
+          },
+          "projectCollections": {
+            "type": "array",
+            "items": {
+              "$ref": "#definitions/Projects"
+            }
+          },
+          "issues": {
+            "type": "string",
+            "description": "Path to directory of flat OR nested hierarchy of issue files."
+          },
+          "management": {
+            "type": "string",
+            "description": "Path to directory of management. Expects directly of format ManagementSettings."
+          }
+        }
+      }
     }
+  }
 }

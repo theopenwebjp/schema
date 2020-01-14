@@ -4,7 +4,8 @@
     "description": "A collection of schema.\r Currently, no specific grouping.",
     "main": "index.js",
     "scripts": {
-
+      "test": "npm run test-json-schema",
+      "test-json-schema": "./node_modules/.bin/ajv compile -s ./schema/json-schema/index.json"
     },
     "repository": {
         "type": "git",
@@ -15,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/goldingdamien/schema/issues"
     },
-    "homepage": "https://github.com/goldingdamien/schema#readme"
+    "homepage": "https://github.com/goldingdamien/schema#readme",
+    "dependencies": {
+        "ajv-cli": "^3.0.0"
+    }
 }
