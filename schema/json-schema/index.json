@@ -7,7 +7,10 @@
 
     "JapanOccupation": {
       "type": "string",
-      "description": "https://www.hellowork.go.jp/info/job_dictionary.html"
+      "description": "The following has moved: https://www.hellowork.go.jp/info/job_dictionary.html to: https://www.hellowork.mhlw.go.jp/info/mhlw_job_dictionary.html",
+      "examples": [
+        "会社役員"
+      ]
     },
 
     "Commute": {
@@ -211,32 +214,86 @@
 
     "Time": {
       "type": "object",
-      "description": "TODO: Unify with date-helper project",
+      "description": "Static date time. All values are readonly so start from 1. TODO: Unify with date-helper project",
       "properties": {
         "string": {
           "type": "string",
-          "default": ""
+          "description": "Text representation of the time. TODO: Deprecated in favour of standardized formats.",
+          "default": "",
+          "examples": [
+            "1/22/2020, 7:54:24 PM"
+          ]
+        },
+        "localeString": {
+          "type": "string",
+          "default": "",
+          "examples": [
+            "1/22/2020, 7:54:24 PM"
+          ]
+        },
+        "utcString": {
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Wed, 22 Jan 2020 10:54:24 GMT"
+          ]
+        },
+        "isoString": {
+          "type": "string",
+          "default": "",
+          "examples": [
+            "2020-01-22T10:54:24.406Z"
+          ]
         },
         "year": {
-          "type": "number"
+          "type": "number",
+          "default": 0,
+          "examples": [
+            1999
+          ]
         },
         "month": {
-          "type": "number"
+          "type": "number",
+          "default": 0,
+          "examples": [
+            11
+          ]
         },
         "day": {
-          "type": "number"
+          "type": "number",
+          "default": 0,
+          "examples": [
+            21
+          ]
         },
         "hours": {
-          "type": "number"
+          "type": "number",
+          "default": 0,
+          "examples": [
+            19
+          ]
         },
         "mins": {
-          "type": "number"
+          "type": "number",
+          "default": 0,
+          "examples": [
+            54
+          ]
         },
         "seconds": {
-          "type": "number"
+          "type": "number",
+          "default": 0,
+          "examples": [
+            21
+          ]
         },
         "time": {
-          "type": "number"
+          "type": "number",
+          "description": "Time in ms similar to JavaScript Number(new Date()).",
+          "default": 0,
+          "examples": [
+            1579690464406
+          ]
         }
       }
     },
@@ -258,20 +315,33 @@
       "properties": {
         "firstName": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "John"
+          ]
         },
         "familyName": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Smith"
+          ]
         },
         "middleName": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Bob"
+          ]
         },
         "otherNames": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": "",
+            "examples": [
+              "Arthur"
+            ]
           }
         }
       }
@@ -279,18 +349,31 @@
 
     "ContactType": {
       "type": "object",
+      "description": "Object with string representations of preset contact types. Can use any kind of contact method such as phone number or email address.",
       "properties": {
         "home": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "012-3456-789",
+            "example@example.example"
+          ]
         },
         "work": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "012-3456-789",
+            "example@example.example"
+          ]
         },
         "mobile": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "012-3456-789",
+            "example@example.example"
+          ]
         }
       }
     },
@@ -300,7 +383,10 @@
       "properties": {
         "username": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "myusername"
+          ]
         }
       }
     },
@@ -349,11 +435,17 @@
       "properties": {
         "latitude": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "35.689487"
+          ]
         },
         "longitude": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "139.691711"
+          ]
         }
       }
     },
@@ -376,43 +468,74 @@
       "properties": {
         "address": {
           "type": "string",
-          "default": ""
+          "description": "String representation of address.",
+          "default": "",
+          "examples": [
+            "123 Apartment, 456 Block, 789 Long Road, Green Town, Green City, Green State, ZIP123 Switzerland"
+          ]
         },
         "country": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Switzerland" 
+          ]
         },
         "state": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Green State"
+          ]
         },
         "town": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Green City"
+          ]
         },
         "subTownOne": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Green Town"
+          ]
         },
         "subTownTwo": {
           "type": "string",
-          "default": ""
+          "default": "456 Block",
+          "examples": [
+            "Sub Town"
+          ]
         },
         "detailsOne": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "123 Apartment"
+          ]
         },
         "detailsTwo": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "456 Block"
+          ]
         },
         "detailsThree": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "789 Long Road"
+          ]
         },
         "zipCode": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "ZIP123"
+          ]
         }
       }
     },
@@ -447,7 +570,6 @@
             "$ref": "#/definitions/PortfolioWork"
           }
         }
-
       }
     },
 
@@ -456,18 +578,27 @@
       "properties": {
         "title": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Amazing Web Application"
+          ]
         },
         "info": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Built with JS, CSS, HTML."
+          ]
         },
         "range": {
           "$ref": "#/definitions/TimeRange"
         },
         "website": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "www.example.com"
+          ]
         }
       }
     },
@@ -476,14 +607,21 @@
       "allOf": [{
         "$ref": "#/definitions/CommonHistory"
       }],
+      "description": "TODO: https://developers.google.com/search/docs/data-types/job-posting https://schema.org/JobPosting",
       "properties": {
         "contract": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "FULL_TIME"
+          ]
         },
         "hours": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "9:00 ~ 18:00"
+          ]
         },
         "contractedCompany": {
           "$ref": "#/definitions/Company"
@@ -499,10 +637,14 @@
 
     "Company": {
       "$ref": "#/definitions/Business",
+      "description": "TODO: Related to https://schema.org/Corporation",
       "properties": {
         "type": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "LLC"
+          ]
         },
         "shares": {
           "type": "array",
@@ -518,18 +660,27 @@
       "properties": {
         "name": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "The Open Web"
+          ]
         },
         "url": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "www.example.com"
+          ]
         },
         "address": {
           "$ref": "#/definitions/Address"
         },
         "founder": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "John Smith"
+          ]
         }
       }
     },
@@ -539,11 +690,18 @@
       "properties": {
         "name": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "description": "Description about the stock type and why and how stocks were obtained.",
+          "examples": [
+            "Stocks received as early investor."
+          ]
         },
         "amount": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "10 stocks"
+          ]
         }
       }
     },
@@ -555,7 +713,10 @@
       "properties": {
         "status": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "In college"
+          ]
         }
       }
     },
@@ -586,16 +747,27 @@
         },
         "title": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Activity Name"
+          ]
         },
         "info": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Helping people in need."
+          ]
         },
         "details": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "description": "Arbitrary sub-data of the item.",
+            "default": "",
+            "examples": [
+              "Extra information."
+            ]
           }
         },
         "location": {
@@ -621,7 +793,10 @@
       "properties": {
         "name": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "JavaScript"
+          ]
         },
         "time": {
           "$ref": "#/definitions/Time"
@@ -630,39 +805,60 @@
     },
 
     "Preferences": {
-      "desire": {
-        "type": "string",
-        "default": ""
-      },
-      "desiredWork": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "requests": {
-        "type": "string",
-        "default": ""
-      },
-      "contract": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "commute": {
-        "$ref": "#/definitions/Commute"
-      },
-      "timing": {
-        "$ref": "#/definitions/Timing"
-      },
-      "pay": {
-        "$ref": "#/definitions/Pay"
-      },
-      "keywords": {
-        "type": "array",
-        "items": {
-          "type": "string"
+      "type": "object",
+      "description": "Job preferences.",
+      "properties": {
+        "desire": {
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Looking to work remotely."
+          ]
+        },
+        "desiredWork": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "examples": [
+              "Vue.js developer"
+            ]
+          }
+        },
+        "requests": {
+          "type": "string",
+          "default": "",
+          "examples": [
+            "Please provide laptop."
+          ]
+        },
+        "contract": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "See Work.contract",
+            "examples": [
+              "FULL_TIME"
+            ]
+          }
+        },
+        "commute": {
+          "$ref": "#/definitions/Commute"
+        },
+        "timing": {
+          "$ref": "#/definitions/Timing"
+        },
+        "pay": {
+          "$ref": "#/definitions/Pay"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": "",
+            "examples": [
+              "C++", "JavaScript"
+            ]
+          }
         }
       }
     },
@@ -670,22 +866,9 @@
     "Hobby": {
       "type": "object",
       "properties": {
-        "hobbies": {}
-      }
-    },
-
-    "Templates": {
-      "type": "object",
-      "properties": {
-        "format": {
-          "type": "string",
-          "default": "camelCase"
-        },
-        "list": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "hobbies": {
+          "type": "object",
+          "description": "TODO: Add further information."
         }
       }
     },
@@ -694,7 +877,18 @@
       "type": "object",
       "properties": {
         "images": {
-          "$ref": "#/definitions/Images"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Image"
+          }
+        },
+        "video": {
+          "type": "array",
+          "description": "TODO"
+        },
+        "audio": {
+          "type": "array",
+          "description": "TODO"
         }
       }
     },
@@ -704,27 +898,42 @@
       "properties": {
         "src": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "www.example.com/image.png"
+          ]
         },
         "data": {
-          "description": "Arbitrary data?"
+          "type": "string",
+          "description": "The image data. This can be in base64 or other format.",
+          "default": "",
+          "examples": [
+            "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          ]
+        },
+        "format": {
+          "type": "string",
+          "description": "Differs from mimeType in that a base64 image has the mime type within the data, but the format is base64.",
+          "examples": [
+            "base64"
+          ]
+        },
+        "mimeType": {
+          "type": "string",
+          "default": "",
+          "examples": [
+            "image/gif"
+          ]
         },
         "dimensions": {
           "width": {
-            "type": "number"
+            "type": "number",
+            "default": 0
           },
           "height": {
-            "type": "number"
+            "type": "number",
+            "default": 0
           }
-        }
-      }
-    },
-
-    "Images": {
-      "type": "object",
-      "properties": {
-        "images": {
-          "type": "array"
         }
       }
     },
@@ -734,11 +943,17 @@
       "properties": {
         "requests": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Please provide time off on Fridays."
+          ]
         },
         "applicationReason": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Job is located nearby."
+          ]
         },
         "commute": {
           "$ref": "#/definitions/Commute"
@@ -751,19 +966,27 @@
       "properties": {
         "name": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "My Job Site"
+          ]
         },
         "description": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "Job site specializing in IT."
+          ]
         },
         "image": {
-          "type": "string",
-          "default": ""
+          "$ref": "#/definitions/Image"
         },
         "url": {
           "type": "string",
-          "default": ""
+          "default": "",
+          "examples": [
+            "www.example.com"
+          ]
         }
       }
     },
@@ -772,10 +995,18 @@
       "type": "object",
       "properties": {
         "owner": {
-          "type": "string"
+          "type": "string",
+          "default": "",
+          "examples": [
+            "John Smith"
+          ]
         },
         "version": {
-          "type": "string"
+          "type": "string",
+          "default": "",
+          "examples": [
+            "1.0.0"
+          ]
         }
       }
     },
@@ -796,10 +1027,15 @@
           "enum": [
             "npm", "composer"
           ],
-          "description": "Specifies which config to use as main. Important when clashes occur."
+          "description": "Specifies which config to use as main. Important when clashes occur.",
+          "default": ""
         },
         "temp": {
-          "type": "string"
+          "type": "string",
+          "default": "",
+          "examples": [
+            "./tmp"
+          ]
         },
         "documentation": {
           "$ref": "#/definitions/SoftwareDocumentation"
@@ -810,25 +1046,29 @@
         "sourcePaths": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "testPaths": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "inputPaths": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "outputPaths": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         }
       }
@@ -918,22 +1158,26 @@
       "properties": {
         "key": {
           "type": "string",
-          "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object."
+          "description": "Key used in paths that specified the drive. Can be mapped based on matched drive from check object.",
+          "default": ""
         },
         "check": {
           "type": "object",
           "properties": {
             "size": {
               "type": "string",
-              "description": "Exact size"
+              "description": "Exact size",
+              "default": ""
             },
             "format": {
               "type": "string",
-              "description": "Drive format"
+              "description": "Drive format",
+              "default": ""
             },
             "path": {
               "type": "string",
-              "description": "Path to a file or directory that always exists"
+              "description": "Path to a file or directory that always exists",
+              "default": ""
             }
           }
         }
@@ -946,37 +1190,43 @@
         "developmentDirectories": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "projectCollections": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "imageDirectories": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "videoDirectories": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "documentDirectories": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         },
         "backupDirectories": {
           "type": "array",
           "items": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         }
       }
@@ -991,27 +1241,33 @@
       "type": "object",
       "properties": {
         "installations": {
-          "type": "string"
+          "type": "string",
+            "default": ""
         },
         "assets": {
           "type": "string",
-          "description": "Path to directory of flat OR nested hierarchy of asset files."
+          "description": "Path to directory of flat OR nested hierarchy of asset files.",
+            "default": ""
         },
         "binaries": {
           "type": "string",
-          "description": "Path to directory of flat hierarchy of binaries."
+          "description": "Path to directory of flat hierarchy of binaries.",
+            "default": ""
         },
         "shortcuts": {
           "type": "string",
-          "description": "Path to directory with flat hierarchy of shortcuts."
+          "description": "Path to directory with flat hierarchy of shortcuts.",
+            "default": ""
         },
         "temp": {
           "type": "string",
-          "description": "Path to directory of temporary data. Temporary data is considered DELETABLE."
+          "description": "Path to directory of temporary data. Temporary data is considered DELETABLE.",
+            "default": ""
         },
         "backup": {
           "type": "string",
-          "description": "Path to directory of backup data."
+          "description": "Path to directory of backup data.",
+            "default": ""
         },
         "projectCollections": {
           "type": "array",
@@ -1021,11 +1277,13 @@
         },
         "issues": {
           "type": "string",
-          "description": "Path to directory of flat OR nested hierarchy of issue files."
+          "description": "Path to directory of flat OR nested hierarchy of issue files.",
+            "default": ""
         },
         "management": {
           "type": "string",
-          "description": "Path to directory of management. Expects directly of format ManagementSettings."
+          "description": "Path to directory of management. Expects directly of format ManagementSettings.",
+            "default": ""
         }
       }
     }
