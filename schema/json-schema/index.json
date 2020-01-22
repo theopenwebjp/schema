@@ -542,10 +542,12 @@
 
     "Notation": {
       "oneOf": [{
-          "type": "string"
+          "type": "string",
+          "default": ""
         },
         {
-          "type": "object"
+          "type": "object",
+          "default": {}
         }
       ],
       "@description1": "Can hold any data.",
