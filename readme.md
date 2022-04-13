@@ -23,6 +23,12 @@ The following schema are allowed:
 
 ## Usage
 
+Install:
+
+```bash
+npm install @theopenweb/schema
+```
+
 If using Node.js and want perform builds, any utility functions are provided in the main index.js file.
 
 ### JSDoc
