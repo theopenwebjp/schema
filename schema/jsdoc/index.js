@@ -1,4 +1,13 @@
 /**
+ * @typedef {import('./browser').CircleRange} CircleRange
+ * @typedef {import('./browser').Drawable} Drawable
+ */
+
+/**
+ * // typedef {import('./node')} ...
+ */
+
+/**
  * @typedef {Object} Size
  * @property {number} width
  * @property {number} height
@@ -33,4 +42,4 @@
  * @property {number} left
  * @property {number} right
  */
-export const {}
+export default {}

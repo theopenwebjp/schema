@@ -543,23 +543,31 @@
     "Notation": {
       "oneOf": [{
           "type": "string",
-          "default": ""
+          "default": "",
+          "anyOf": [
+            {
+              "$ref": "iso-language-codes.json#definitions/codes"
+            },
+            {
+              "$ref": "iso-language-names.json#definitions/names"
+            },
+            {
+              "$ref": "language-scripts.json#definitions/scripts"
+            }
+          ]
         },
         {
           "type": "object",
           "default": {}
         }
       ],
-      "@description1": "Can hold any data.",
-      "@description2": "Allowed formats",
-      "@description3": "1. ISO language code",
-      "@description4": "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
-      "@description5": "2. ISO language name",
-      "@description6": "3. Script name(Example: katakana)",
-      "@type": [
-        "./iso-language-codes.json",
-        "./iso-language-names.json",
-        "./scripts.json"
+      "@description": [
+        "Can hold any data.",
+        "Allowed formats",
+        "1. ISO language code",
+        "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes",
+        "2. ISO language name",
+        "3. Script name(Example: katakana)"
       ]
     },
 

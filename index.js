@@ -1,19 +1,14 @@
+// Node.js ONLY
+
+const path = require('path')
+const JSDocPath = path.resolve(__dirname, 'schema', 'jsdoc', 'index.js')
+
 const schema = {
-    'custom-json-ld': require('./schema/custom-json-ld/index.json'),
-    'json-schema': require('./schema/json-schema/index.json')
+    'JSDoc': () => JSDocPath, // Returns the path only. Use for building etc. For importing types normally, as an example use: /** @type {import('schema/jsdoc').Size} */ 
+    'JSONSchema': require('./schema/json-schema/index.json')
 }
 
-const all = Object.assign(schema['custom-json-ld'], schema['json-schema'])
-
-const Schema = Object.assign({
-        all: all
-    },
+module.exports = {
     schema,
-    all
-)
-
-// TODO: Merge directories into nested object and all.
-
-if (typeof module === 'object') {
-    module.exports = Schema
+    // any helpers, etc.
 }

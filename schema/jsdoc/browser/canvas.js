@@ -10,4 +10,4 @@
  * @typedef {HTMLImageElement | SVGImageElement | HTMLVideoElement | HTMLCanvasElement | ImageBitmap | OffscreenCanvas} Drawable
  */
 
-export const {}
+export default {}
