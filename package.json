@@ -1,6 +1,6 @@
 {
   "name": "@theopenweb/schema",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A collection of schema.\r Currently, no specific grouping.",
   "main": "index.js",
   "scripts": {

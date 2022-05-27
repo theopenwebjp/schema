@@ -546,13 +546,13 @@
           "default": "",
           "anyOf": [
             {
-              "$ref": "iso-language-codes.json#definitions/codes"
+              "$ref": "iso-language-codes.json#/definitions/codes"
             },
             {
-              "$ref": "iso-language-names.json#definitions/names"
+              "$ref": "iso-language-names.json#/definitions/names"
             },
             {
-              "$ref": "language-scripts.json#definitions/scripts"
+              "$ref": "language-scripts.json#/definitions/scripts"
             }
           ]
         },
