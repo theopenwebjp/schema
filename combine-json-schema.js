@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 const path = require('path')
 
 async function combine() {
-  const newSchema = await $RefParser.dereference(schema)
+  const newSchema = await $RefParser.dereference(/** @type {any} */ (schema))
   console.log('Combined schema:', newSchema)
   return newSchema
 }
