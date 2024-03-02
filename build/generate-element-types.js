@@ -1,6 +1,7 @@
 const { JSDOM } = require('jsdom')
 const fs = require('fs')
 const path = require('path')
+const { getGeneratedDir } = require('../src/build-helpers')
 
 /**
 * @param {any[]} arr
@@ -60,7 +61,7 @@ async function generateElementTypes() {
   export ${HTMLBlockElementsType()}
   export ${HTMLInlineElementsType()}
   `
-  await fs.promises.writeFile(path.resolve(__dirname, './test/output', './element-types.ts'), string)
+  await fs.promises.writeFile(path.resolve(getGeneratedDir(), './element-types.ts'), string)
 }
 generateElementTypes()
 

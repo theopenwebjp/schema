@@ -10,11 +10,15 @@
         "resolveJsonModule": true
     },
     "include": [
-        "combine-json-schema.js",
-        "generate-json-schema-defaults.js",
-        "index.js"
+        "schema/**/*.js",
+        "schema/**/*.ts",
+        "test/**/*.js",
+        "test/**/*.ts",
+        "build/**/*.js",
+        "src/**/*.js"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "dist"
     ]
 }

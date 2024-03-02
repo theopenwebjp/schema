@@ -71,3 +71,18 @@ If using Node.js and want perform builds, any utility functions are provided in 
 ## Languages
 
 [https://www.w3.org/TR/json-ld/#string-internationalization](Internationalization)
+
+## Conversions
+
+### JSDoc => TypeScript
+
+```bash
+tsc [SOURCE] --declaration --emitDeclarationOnly --allowJs
+```
+
+## Generated Schema
+
+- Schema MAY be generated into [./schema/generated](./schema/generated).
+- Schema MAY be generated either via an arbitrary build process, or via conversion.
+- For conversions, use the following file hierarchy: "./schema/generated/[DESTINATION_SCHEMA_TYPE]/from_[SOURCE_SCHEMA_TYPE]/[FILENAME]"
+- For arbitrary build, use the following file hierarchy: "./schema/generated/[DESTINATION_SCHEMA_TYPE]/[FILENAME]"

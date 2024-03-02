@@ -57,3 +57,10 @@ typings/
 # dotenv environment variables file
 .env
 
+# Other
+
+# Generated content SHOULD be shown
+# generated
+
+# Test outputs SHOULD NOT be shown
+./test/output
