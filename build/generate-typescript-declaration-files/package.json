@@ -1,0 +1,14 @@
+{
+    "name": "@theopenweb/generated-typescript-declaration-files",
+    "description": "This is for generating typescript declaration files ONLY. Use DefinitelyTyped where possible. This is a quicker, easier way to get types generated.",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "install": "npm install --ignore-scripts",
+        "build": "node ./index.js"
+    },
+    "dependencies": {
+        "unique-selector": "latest"
+    },
+    "private": true
+}

@@ -7,6 +7,7 @@ const FILES = [
     'generate-element-types.js',
     // 'generate-json-schema-defaults.js', // TODO: First fix issue.
     'generate-typescript-string-integer-maps.js',
+    'generate-typescript-declaration-files/index.js',
 ]
 const COMMANDS = FILES.map(file => `node ${file}`)
 
