@@ -86,3 +86,7 @@ tsc [SOURCE] --declaration --emitDeclarationOnly --allowJs
 - Schema MAY be generated either via an arbitrary build process, or via conversion.
 - For conversions, use the following file hierarchy: "./schema/generated/[DESTINATION_SCHEMA_TYPE]/from_[SOURCE_SCHEMA_TYPE]/[FILENAME]"
 - For arbitrary build, use the following file hierarchy: "./schema/generated/[DESTINATION_SCHEMA_TYPE]/[FILENAME]"
+
+## Extra Documentation
+
+- [Generate TypeScript declaration files](./build/generate-typescript-declaration-files/README.md)
